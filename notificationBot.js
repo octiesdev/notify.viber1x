@@ -23,9 +23,9 @@ app.post("/notify", (req, res) => {
   const { type, payload } = req.body;
 
   const messages = {
-    deposit: `💸 Пользователь ${payload.userId} пополнил баланс на сумму ${payload.amount} TON`,
-    paid: `🔥 Пользователь ${payload.userId} запустил ПЛАТНУЮ ноду #${payload.nodeIndex} за ${payload.stake} TON`,
-    free: `🚀 Пользователь ${payload.userId} запустил БЕСПЛАТНУЮ ноду`
+    deposit: `💸 Пользователь ${payload.userId} (@${payload.username || "нет username"}) пополнил баланс на сумму ${payload.amount} TON`,
+    paid: `🔥 Пользователь ${payload.userId} (@${payload.username || "нет username"}) запустил ПЛАТНУЮ ноду #${payload.nodeIndex} за ${payload.stake} TON`,
+    free: `🚀 Пользователь ${payload.userId} (@${payload.username || "нет username"}) запустил БЕСПЛАТНУЮ ноду`
   };
 
   const msg = messages[type];

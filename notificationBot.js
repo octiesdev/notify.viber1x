@@ -12,7 +12,7 @@ const ADMIN_IDS = process.env.ADMIN_IDS.split(",").map(id => id.trim());
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   if (!ADMIN_IDS.includes(msg.from.id.toString())) {
-    return bot.sendMessage(chatId, "⛔ У вас нет доступа.");
+    return bot.sendMessage(chatId, "⛔ У вас нет достпа.");
   }
 
   bot.sendMessage(chatId, "✅ Вы подписаны на уведомления.");

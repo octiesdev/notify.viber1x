@@ -22,6 +22,13 @@ bot.onText(/\/start/, (msg) => {
 app.post("/notify", (req, res) => {
   const { type, payload } = req.body;
 
+    // Если пользователь из bot_test рефералов — пропускаем отправку уведомлений
+    if (payload.referredBy === "bot_test" || payload.refCode === "bot_test") {
+      console.log("⛔ Пропускаем уведомление для тестового реферала (bot_test).");
+      return res.status(200).json({ skipped: true });
+    }
+  
+
   const messages = {
     deposit: `💸 Пользователь ${payload.userId} (@${payload.username || "нет username"}) пополнил баланс на сумму ${payload.amount} TON`,
     paid: `🔥 Пользователь ${payload.userId} (@${payload.username || "нет username"}) запустил ПЛАТНУЮ ноду №${payload.nodeIndex} за ${payload.stake} TON`,
